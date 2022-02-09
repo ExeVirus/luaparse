@@ -17,7 +17,9 @@ include_directories(
     .
 )
 
-add_executable(parse main.cpp)
+add_subdirectory(md4c)
 
+add_executable(parse main.cpp)
+target_link_libraries(parse ${CMAKE_SOURCE_DIR}/src/lua/lua51.lib md4c)
 
 install (TARGETS parse DESTINATION ${CMAKE_SOURCE_DIR}/bin)
