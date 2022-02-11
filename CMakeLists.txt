@@ -7,6 +7,13 @@ else()
 	cmake_policy(VERSION 3.9)
 endif()
 
+# Direct everything to bin
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin )
+foreach( OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES} )
+    string( TOUPPER ${OUTPUTCONFIG} OUTPUTCONFIG )
+    set( CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${CMAKE_SOURCE_DIR}/bin )
+endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
+
 # This can be read from ${PROJECT_NAME} after project() is called
 project(luaparse)
 set(PROJECT_NAME_CAPITALIZED "LuaParse")
